@@ -1,0 +1,26 @@
+.hero {
+  background: url('../img/colegio.jpeg') center center/cover no-repeat;
+  height: 100vh;
+  color: #fff;
+}
+
+.hero {
+  background: url('../img/colegio.jpeg') center center / cover no-repeat;
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* oscuridad (ajustable) */
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3; /* para que el texto esté encima del overlay */
+}
