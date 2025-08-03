@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Promoción Social - Excelencia Educativa Integral</title>
+    <meta name="description" content="Institución educativa líder en formación integral. Preescolar, primaria, secundaria y media vocacional. Más de 25 años de excelencia académica.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        
+        /* ========================================
+           CSS VARIABLES & RESET
+        ======================================== */
+        :root {
+            --azul-principal: #1E3A8A;
+            --amarillo-vibrante: #FCD34D;
+            --verde-esperanza: #10B981;
+            --blanco: #FFFFFF;
+            --gris-claro: #F8FAFC;
+            --gris-medio: #64748B;
+            --gris-oscuro: #334155;
+            --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --sombra-fuerte: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --transicion-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            color: var(--gris-oscuro);
+        }
+
+        /* ========================================
+           UTILITY CLASSES
+        ======================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--azul-principal);
+            margin-bottom: 1rem;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--amarillo-vibrante), var(--verde-esperanza));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gris-medio);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========================================
+           LOADING SCREEN
+        ======================================== */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--azul-principal);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-left: 4px solid var(--amarillo-vibrante);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        .loading-text {
+            color: var(--blanco);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ========================================
+           SCROLL PROGRESS INDICATOR
+        ======================================== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(45deg, var(--amarillo-vibrante), var(--verde-esperanza));
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transicion-suave);
+            background: rgba(30, 58, 138, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar.scrolled {
+            background: var(--azul-principal);
+            box-shadow: var(--sombra-media);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--blanco);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--amarillo-vibrante), var(--verde-esperanza));
+            border-radius: 8px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--azul-principal);
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1rem;
+            font-weight: 800;
+            margin-left: 6px;
+            color: var(--blanco);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--blanco);
+            text-decoration: none;
+            transition: var(--transicion-suave);
+            position: relative;
+            font-weight: 500;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a:hover {
+            color: var(--amarillo-vibrante);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--amarillo-vibrante);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--amarillo-vibrante), var(--verde-esperanza));
+            color: var(--azul-principal);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicion-suave);
+            box-shadow: 0 4px 15px rgba(252, 211, 77, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(252, 211, 77, 0.4);
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--blanco);
+            margin: 3px 0;
+            transition: var(--transicion-suave);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(16, 185, 129, 0.6)),
+                        url('img/llegada.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--blanco);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--amarillo-vibrante);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; top: 60%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; top: 80%; left: 20%; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 5px; height: 5px; top: 40%; left: 90%; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 4px; height: 4px; top: 70%; left: 60%; animation-delay: 3s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--blanco), var(--amarillo-vibrante));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicion-suave);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--amarillo-vibrante), var(--verde-esperanza));
+            color: var(--azul-principal);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--blanco);
+            border: 2px solid var(--blanco);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(252, 211, 77, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: var(--blanco);
+            color: var(--azul-principal);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           ABOUT SECTION
+        ======================================== */
+        .about {
+            background: var(--gris-claro);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            color: var(--azul-principal);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about-content p {
+            color: var(--gris-medio);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--blanco);
+            border-radius: var(--border-radius);
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion-suave);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--verde-esperanza);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--gris-medio);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .campus-showcase {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--sombra-media);
+            transition: var(--transicion-suave);
+        }
+
+        .campus-showcase:hover {
+            transform: scale(1.02);
+        }
+
+        /* ========================================
+           LEVELS SECTION
+        ======================================== */
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .level-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion-suave);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, var(--amarillo-vibrante), var(--verde-esperanza));
+        }
+
+        .level-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--sombra-fuerte);
+        }
+
+        .level-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--azul-principal), var(--verde-esperanza));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--blanco);
+            margin-bottom: 1.5rem;
+        }
+
+        .level-card h3 {
+            color: var(--azul-principal);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .level-card p {
+            color: var(--gris-medio);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .level-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .level-features li {
+            color: var(--gris-medio);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .level-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde-esperanza);
+            font-weight: bold;
+        }
+
+        .level-btn {
+            background: linear-gradient(45deg, var(--azul-principal), var(--verde-esperanza));
+            color: var(--blanco);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transicion-suave);
+            width: 100%;
+            font-weight: 600;
+        }
+
+        .level-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        /* ========================================
+           FACILITIES CAROUSEL
+        ======================================== */
+        .facilities {
+            background: var(--gris-claro);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: var(--sombra-media);
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--blanco);
+            padding: 2rem;
+        }
+
+        .carousel-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transicion-suave);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--azul-principal);
+        }
+
+        .carousel-nav:hover {
+            background: var(--blanco);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev { left: 20px; }
+        .carousel-next { right: 20px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gris-medio);
+            cursor: pointer;
+            transition: var(--transicion-suave);
+        }
+
+        .carousel-dot.active {
+            background: var(--azul-principal);
+            transform: scale(1.2);
+        }
+
+        /* ========================================
+           PROGRAMS SECTION
+        ======================================== */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: var(--blanco);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion-suave);
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .program-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-content h3 {
+            color: var(--azul-principal);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .program-content p {
+            color: var(--gris-medio);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           NEWS SECTION
+        ======================================== */
+        .news {
+            background: var(--gris-claro);
+        }
+
+        .news-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            scroll-behavior: smooth;
+        }
+
+        .news-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .news-carousel::-webkit-scrollbar-track {
+            background: var(--gris-claro);
+            border-radius: 10px;
+        }
+
+        .news-carousel::-webkit-scrollbar-thumb {
+            background: var(--azul-principal);
+            border-radius: 10px;
+        }
+
+        .news-card {
+            min-width: 300px;
+            background: var(--blanco);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicion-suave);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-media);
+        }
+
+        .news-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: var(--transicion-suave);
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: var(--gris-medio);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .news-title {
+            color: var(--azul-principal);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            color: var(--gris-medio);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* ========================================
+           ADMISSIONS SECTION
+        ======================================== */
+        .admissions {
+            background: var(--gris-claro);
+        }
+
+        .admissions-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .process-steps {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: var(--transicion-suave);
+        }
+
+        .step:hover {
+            background: var(--gris-claro);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--azul-principal), var(--verde-esperanza));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--azul-principal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: var(--gris-medio);
+            font-size: 0.9rem;
+        }
+
+        .admission-form {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--azul-principal);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transicion-suave);
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--azul-principal);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .form-submit {
+            background: linear-gradient(45deg, var(--azul-principal), var(--verde-esperanza));
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: var(--transicion-suave);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ========================================
+           CONTACT SECTION
+        ======================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--azul-principal), var(--verde-esperanza));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h4 {
+            color: var(--azul-principal);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .contact-details p {
+            color: var(--gris-medio);
+            margin: 0;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* ========================================
+           FOOTER
+        ======================================== */
+        .footer {
+            background: var(--azul-principal);
+            color: var(--blanco);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--amarillo-vibrante);
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transicion-suave);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--amarillo-vibrante);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            text-decoration: none;
+            transition: var(--transicion-suave);
+        }
+
+        .social-link:hover {
+            background: var(--amarillo-vibrante);
+            color: var(--azul-principal);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           WHATSAPP FLOATING BUTTON
+        ======================================== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: var(--transicion-suave);
+            text-decoration: none;
+            color: white;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+            color: white;
+        }
+
+        /* ========================================
+           ANIMATION CLASSES
+        ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-delay-1 { animation-delay: 0.2s; }
+        .fade-in-delay-2 { animation-delay: 0.4s; }
+        .fade-in-delay-3 { animation-delay: 0.6s; }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                background: var(--azul-principal);
+                padding: 2rem 0;
+                transform: translateX(-100%);
+                transition: var(--transicion-suave);
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-grid,
+            .student-life-grid,
+            .contact-grid,
+            .admissions-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .carousel-prev { left: 10px; }
+            .carousel-next { right: 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .news-card {
+                min-width: 280px;
+            }
+        }
+
+        /* ========================================
+           ACCESSIBILITY IMPROVEMENTS
+        ======================================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for better accessibility */
+        .btn:focus,
+        .nav-menu a:focus,
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--amarillo-vibrante);
+            outline-offset: 2px;
+        }
+
+        /* ========================================
+           UTILITY CLASSES FOR SCROLL ANIMATIONS
+        ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text">Cargando experiencia educativa...</div>
+    </div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#inicio" class="logo">
+                <div class="logo-icon">PS</div>
+                <span class="logo-text">Promoción Social</span>
+            </a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+                <li><a href="#niveles" class="nav-link">Niveles</a></li>
+                <li><a href="#instalaciones" class="nav-link">Instalaciones</a></li>
+                <li><a href="#programas" class="nav-link">Programas</a></li>
+                <li><a href="#noticias" class="nav-link">Noticias</a></li>
+                <li><a href="#admisiones" class="nav-link">Admisiones</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+
+            <a href="#admisiones" class="cta-button">Inscripciones</a>
+
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Formamos Líderes del Futuro</h1>
+            <p>Excelencia académica, valores sólidos y formación integral para el éxito de nuestros estudiantes en un mundo globalizado.</p>
+            <div class="hero-buttons">
+                <a href="#programas" class="btn btn-primary">Conoce Nuestros Programas</a>
+                <a href="#contacto" class="btn btn-secondary">Agenda una Visita</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="nosotros">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Acerca del Colegio</h2>
+                <p class="section-subtitle">Más de 25 años de excelencia educativa comprometidos con la formación integral de nuestros estudiantes</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content reveal">
+                    <h3>Nuestra Misión</h3>
+                    <p>Somos una institución educativa comprometida con la formación integral de niños y jóvenes, desarrollando competencias académicas, valores humanos y habilidades para la vida que les permitan ser ciudadanos exitosos y contributivos a la sociedad.</p>
+                    
+                    <h3>Nuestra Visión</h3>
+                    <p>Ser reconocidos como la institución educativa líder en formación integral, innovación pedagógica y excelencia académica, preparando estudiantes capaces de transformar positivamente su entorno.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="25">0</span>
+                            <span class="stat-label">Años de Experiencia</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2500">0</span>
+                            <span class="stat-label">Estudiantes Graduados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="85">0</span>
+                            <span class="stat-label">Docentes Especializados</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="12">0</span>
+                            <span class="stat-label">Programas Académicos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal">
+                    <img src="img/campus.jpg" class="campus-showcase" alt="Campus del Colegio Promoción Social">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Educational Levels -->
+    <section class="section" id="niveles">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Niveles Educativos</h2>
+                <p class="section-subtitle">Educación integral desde preescolar hasta media vocacional con metodologías innovadoras</p>
+            </div>
+            <div class="levels-grid">
+                <div class="level-card reveal">
+                    <div class="level-icon">🎨</div>
+                    <h3>Preescolar (3-5 años)</h3>
+                    <p>Desarrollo de habilidades básicas, creatividad y socialización a través del juego y la exploración.</p>
+                    <ul class="level-features">
+                        <li>Metodología Montessori</li>
+                        <li>Desarrollo psicomotriz</li>
+                        <li>Bilingüismo temprano</li>
+                        <li>Arte y música</li>
+                    </ul>
+                    <button class="level-btn" onclick="showLevelInfo('preescolar')">Más Información</button>
+                </div>
+                
+                <div class="level-card reveal">
+                    <div class="level-icon">📚</div>
+                    <h3>Primaria (6-11 años)</h3>
+                    <p>Fortalecimiento de competencias básicas con enfoque en lectoescritura, matemáticas y ciencias.</p>
+                    <ul class="level-features">
+                        <li>Aprendizaje por proyectos</li>
+                        <li>Tecnología educativa</li>
+                        <li>Programa de liderazgo</li>
+                        <li>Actividades deportivas</li>
+                    </ul>
+                    <button class="level-btn" onclick="showLevelInfo('primaria')">Más Información</button>
+                </div>
+                
+                <div class="level-card reveal">
+                    <div class="level-icon">🔬</div>
+                    <h3>Secundaria (12-16 años)</h3>
+                    <p>Profundización académica con énfasis en ciencias, humanidades y desarrollo del pensamiento crítico.</p>
+                    <ul class="level-features">
+                        <li>Laboratorios especializados</li>
+                        <li>Programa STEM</li>
+                        <li>Intercambios culturales</li>
+                        <li>Orientación vocacional</li>
+                    </ul>
+                    <button class="level-btn" onclick="showLevelInfo('secundaria')">Más Información</button>
+                </div>
+                
+                <div class="level-card reveal">
+                    <div class="level-icon">🎓</div>
+                    <h3>Media Vocacional (17-18 años)</h3>
+                    <p>Preparación integral para la educación superior con especialización en áreas de interés.</p>
+                    <ul class="level-features">
+                        <li>Bachillerato académico</li>
+                        <li>Preparación universitaria</li>
+                        <li>Proyectos de investigación</li>
+                        <li>Prácticas profesionales</li>
+                    </ul>
+                    <button class="level-btn" onclick="showLevelInfo('media')">Más Información</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Carousel -->
+    <section class="section facilities" id="instalaciones">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestras Instalaciones</h2>
+                <p class="section-subtitle">Espacios modernos y funcionales diseñados para potenciar el aprendizaje</p>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel" id="facilitiesCarousel">
+                    <div class="carousel-slides" id="carouselSlides">
+                        <div class="carousel-slide">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%231E3A8A' width='800' height='400'/><g fill='%23FCD34D' opacity='0.3'><rect x='50' y='50' width='150' height='100' rx='10'/><rect x='250' y='50' width='150' height='100' rx='10'/><rect x='450' y='50' width='150' height='100' rx='10'/><rect x='650' y='50' width='100' height='100' rx='10'/></g><text x='400' y='250' text-anchor='middle' fill='%23FFFFFF' font-size='36' font-family='Arial'>AULAS INTELIGENTES</text></svg>" alt="Aulas Inteligentes">
+                            <div class="carousel-overlay">
+                                <h3>Aulas Inteligentes</h3>
+                                <p>Espacios equipados con tecnología de punta, pizarras digitales y conectividad de alta velocidad.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%2310B981' width='800' height='400'/><g fill='%23FCD34D' opacity='0.4'><circle cx='200' cy='150' r='40'/><circle cx='400' cy='100' r='30'/><circle cx='600' cy='180' r='35'/><rect x='100' y='250' width='600' height='50' rx='25'/></g><text x='400' y='320' text-anchor='middle' fill='%23FFFFFF' font-size='36' font-family='Arial'>LABORATORIOS</text></svg>" alt="Laboratorios">
+                            <div class="carousel-overlay">
+                                <h3>Laboratorios de Ciencias</h3>
+                                <p>Laboratorios completamente equipados para química, física, biología y tecnología.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/fondo3.jpeg" alt="Biblioteca">
+                            <div class="carousel-overlay">
+                                <h3>Biblioteca Moderna</h3>
+                                <p>Más de 10,000 volúmenes, acceso digital y espacios de estudio colaborativo.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/auditorio.jpg">
+                            <div class="carousel-overlay">
+                                <h3>Auditorio Principal</h3>
+                                <p>Capacidad para 500 personas con sistema de audio profesional y iluminación escénica.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="img/cancha.jpg" alt="Canchas Deportivas">
+                            <div class="carousel-overlay">
+                                <h3>Canchas Deportivas</h3>
+                                <p>Múltiples espacios deportivos incluyendo fútbol, baloncesto, voleibol y atletismo.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'><rect fill='%23FCD34D' width='800' height='400'/><g fill='%231E3A8A' opacity='0.3'><rect x='100' y='100' width='200' height='200' rx='20'/><rect x='350' y='100' width='200' height='200' rx='20'/><rect x='600' y='100' width='100' height='200' rx='20'/><circle cx='400' cy='350' r='30'/></g><text x='400' y='380' text-anchor='middle' fill='%231E3A8A' font-size='24' font-family='Arial'>CAFETERÍA Y ESPACIOS SOCIALES</text></svg>" alt="Cafetería">
+                            <div class="carousel-overlay">
+                                <h3>Cafetería y Espacios Sociales</h3>
+                                <p>Áreas de descanso y alimentación con menús balanceados y espacios de recreación.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-nav carousel-prev" id="carouselPrev">‹</button>
+                    <button class="carousel-nav carousel-next" id="carouselNext">›</button>
+                </div>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="section" id="programas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Programas Especiales</h2>
+                <p class="section-subtitle">Programas complementarios que enriquecen la formación académica de nuestros estudiantes</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card reveal">
+                    <img src="img/sena.jpg" alt="Programa Técnico SENA" class="program-image">
+                    <div class="program-content">
+                        <h3>Programas Técnico SENA</h3>
+                        <p>Inmersión completa en programación de software y contabilidad con certificaciones y preparación técnica.</p>
+                    </div>
+                </div>
+
+                <div class="program-card reveal">
+                    <img src="img/stem.jpg" alt="STEM Avanzado" class="program-image">
+                    <div class="program-content">
+                        <h3>STEM Avanzado</h3>
+                        <p>Ciencia, Tecnología, Ingeniería y Matemáticas con proyectos de robótica, programación e investigación científica.</p>
+                    </div>
+                </div>
+
+                <div class="program-card reveal">
+                    <img src="img/arte.jpg" alt="Arte y Cultura" class="program-image">
+                    <div class="program-content">
+                        <h3>Arte y Cultura</h3>
+                        <p>Desarrollo artístico integral con música, teatro, artes plásticas y danza para estimular la creatividad.</p>
+                    </div>
+                </div>
+
+                <div class="program-card reveal">
+                    <img src="img/danza.jpg" class="program-image">
+                    <div class="program-content">
+                        <h3>Deportes y Recreación</h3>
+                        <p>Programa deportivo completo con equipos competitivos en múltiples disciplinas y escuelas de formación.</p>
+                    </div>
+                </div>
+
+                <div class="program-card reveal">
+                    <img src="img/lideres.jpg" class="program-image">
+                    <div class="program-content">
+                        <h3>Liderazgo Estudiantil</h3>
+                        <p>Desarrollo de habilidades de liderazgo, emprendimiento y servicio comunitario desde temprana edad.</p>
+                    </div>
+                </div>
+
+                <div class="program-card reveal">
+                    <img src="img/ambiente.jpg" class="program-image">
+                    <div class="program-content">
+                        <h3>Sostenibilidad Ambiental</h3>
+                        <p>Conciencia ecológica y proyectos ambientales para formar ciudadanos responsables con el planeta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section news" id="noticias">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Noticias y Eventos</h2>
+                <p class="section-subtitle">Mantente informado sobre las últimas actividades y logros de nuestra comunidad educativa</p>
+            </div>
+            <div class="news-carousel" id="newsCarousel">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="img/llegada.jpg" />
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">15 de Enero, 2025</p>
+                        <h3 class="news-title">Inicio del Año Escolar 2025</h3>
+                        <p class="news-excerpt">Damos la bienvenida a todos nuestros estudiantes para un nuevo año lleno de aprendizajes y experiencias...</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="img/pruebas.jpg" alt="Olimpiada de Matemáticas" />
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">10 de Enero, 2025</p>
+                        <h3 class="news-title">Estudiantes Ganan Olimpiada de Matemáticas</h3>
+                        <p class="news-excerpt">Nuestro equipo de matemáticas obtuvo el primer lugar en la competencia regional, demostrando excelencia...</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="img/ambiente2.jpg" alt="Proyecto Ambiental" />
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">8 de Enero, 2025</p>
+                        <h3 class="news-title">Proyecto Ambiental Escolar</h3>
+                        <p class="news-excerpt">Inauguramos el nuevo jardín escolar como parte de nuestro compromiso con la sostenibilidad ambiental...</p>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="img/cultura.jpg" alt="Festival de Arte y Cultura" />
+                    </div>
+                    <div class="news-content">
+                        <p class="news-date">5 de Enero, 2025</p>
+                        <h3 class="news-title">Festival de Arte y Cultura</h3>
+                        <p class="news-excerpt">Próximamente presentaremos nuestro festival anual donde los estudiantes mostrarán sus talentos artísticos...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section class="section admissions" id="admisiones">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proceso de Admisión</h2>
+                <p class="section-subtitle">Te acompañamos paso a paso en el proceso de matrícula para que tu hijo forme parte de nuestra familia educativa</p>
+            </div>
+            <div class="admissions-content">
+                <div class="process-steps reveal">
+                    <h3 style="color: var(--azul-principal); margin-bottom: 2rem; text-align: center;">Pasos para el Ingreso</h3>
+                    
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Solicitud en Línea</h4>
+                            <p>Completa el formulario de pre-inscripción con los datos básicos del estudiante y la familia.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Documentación</h4>
+                            <p>Presenta los documentos requeridos: certificados académicos, documentos de identidad y registros médicos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Entrevista Familiar</h4>
+                            <p>Reunión con coordinadores académicos para conocer las expectativas y presentar nuestro proyecto educativo.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Pruebas de Nivelación</h4>
+                            <p>Evaluación diagnóstica para identificar el nivel académico y necesidades específicas del estudiante.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Matrícula y Bienvenida</h4>
+                            <p>Formalización de la matrícula e inducción para estudiantes y padres de familia.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admission-form reveal">
+                    <h3 style="color: var(--azul-principal); margin-bottom: 2rem; text-align: center;">Formulario de Pre-inscripción</h3>
+                    <form id="admissionForm">
+                        <div class="form-group">
+                            <label for="studentName">Nombre Completo del Estudiante*</label>
+                            <input type="text" id="studentName" name="studentName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="birthDate">Fecha de Nacimiento*</label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="grade">Grado a Aplicar*</label>
+                            <select id="grade" name="grade" required>
+                                <option value="">Seleccionar grado</option>
+                                <option value="prejardin">Pre-jardín</option>
+                                <option value="jardin">Jardín</option>
+                                <option value="transicion">Transición</option>
+                                <option value="primero">Primero</option>
+                                <option value="segundo">Segundo</option>
+                                <option value="tercero">Tercero</option>
+                                <option value="cuarto">Cuarto</option>
+                                <option value="quinto">Quinto</option>
+                                <option value="sexto">Sexto</option>
+                                <option value="septimo">Séptimo</option>
+                                <option value="octavo">Octavo</option>
+                                <option value="noveno">Noveno</option>
+                                <option value="decimo">Décimo</option>
+                                <option value="once">Once</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="parentName">Nombre del Padre/Madre/Acudiente*</label>
+                            <input type="text" id="parentName" name="parentName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono de Contacto*</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico*</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Información Adicional</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Cuéntanos por qué quieres que tu hijo estudie en nuestro colegio..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit" id="submitBtn">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contacto e Información</h2>
+                <p class="section-subtitle">Estamos aquí para resolver todas tus dudas y acompañarte en el proceso educativo</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3 style="color: var(--azul-principal); margin-bottom: 2rem;">Información de Contacto</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Dirección</h4>
+                            <p>Cra. 6 #No. 11-24<br>Palermo, Huila, Colombia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Teléfonos</h4>
+                            <p>PBX: (601) 612-3456<br>Admisiones: (601) 612-3457</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Correos Electrónicos</h4>
+                            <p>info@promocionsocial.edu.co<br>admisiones@promocionsocial.edu.co</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div class="contact-details">
+                            <h4>Horarios de Atención</h4>
+                            <p>Lunes a Viernes: 7:00 AM - 5:00 PM<br>Sábados: 8:00 AM - 12:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <h4>WhatsApp Business</h4>
+                            <p>+57 300 123 4567<br>Atención inmediata</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container reveal">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3977.105946265605!2d-74.54326168523822!3d2.896049955018783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2475c56a6a2a67%3A0xf90994ec9b7a0885!2sCra.%206%20%2311-24%2C%20Palermo%2C%20Huila%2C%20Colombia!5e0!3m2!1ses!2sco!4v1722456514701!5m2!1ses!2sco" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Ubicación del Colegio Promoción Social">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Colegio Promoción Social</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Formando líderes del futuro con excelencia académica y valores sólidos desde 1999.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#nosotros">Acerca de Nosotros</a></li>
+                        <li><a href="#niveles">Niveles Educativos</a></li>
+                        <li><a href="#programas">Programas Especiales</a></li>
+                        <li><a href="#instalaciones">Instalaciones</a></li>
+                        <li><a href="#noticias">Noticias y Eventos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Para Padres</h3>
+                    <ul>
+                        <li><a href="#admisiones">Proceso de Admisión</a></li>
+                        <li><a href="#">Portal de Padres</a></li>
+                        <li><a href="#">Calendario Académico</a></li>
+                        <li><a href="#">Costos y Becas</a></li>
+                        <li><a href="#">Manual de Convivencia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Recursos</h3>
+                    <ul>
+                        <li><a href="#">Biblioteca Virtual</a></li>
+                        <li><a href="#">Plataforma Educativa</a></li>
+                        <li><a href="#">Orientación Psicológica</a></li>
+                        <li><a href="#">Servicios Complementarios</a></li>
+                        <li><a href="#">Programas de Apoyo</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Colegio Promoción Social. Todos los derechos reservados.</p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">Licencia de funcionamiento MEN N° 001234 | NIT: 800.123.456-7</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        💬
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // ========================================
+        // GLOBAL VARIABLES
+        // ========================================
+        let isLoading = true;
+        let currentSlide = 0;
+        let totalSlides = 0;
+        let carouselInterval = null;
+
+        // ========================================
+        // DOM CONTENT LOADED
+        // ========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWebsite();
+        });
+
+        // ========================================
+        // MAIN INITIALIZATION
+        // ========================================
+        function initializeWebsite() {
+            // Initialize loading screen
+            initializeLoadingScreen();
+            
+            // Initialize navigation
+            initializeNavigation();
+            
+            // Initialize scroll effects
+            initializeScrollEffects();
+            
+            // Initialize carousel
+            initializeCarousel();
+            
+            // Initialize animations
+            initializeAnimations();
+            
+            // Initialize forms
+            initializeForms();
+            
+            // Initialize counters
+            initializeCounters();
+        }
+
+        // ========================================
+        // LOADING SCREEN
+        // ========================================
+        function initializeLoadingScreen() {
+            window.addEventListener('load', function() {
+                setTimeout(() => {
+                    const loading = document.getElementById('loading');
+                    loading.classList.add('hidden');
+                    isLoading = false;
+                }, 1500);
+            });
+        }
+
+        // ========================================
+        // NAVIGATION
+        // ========================================
+        function initializeNavigation() {
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            // Scroll effect for navbar
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                
+                updateScrollProgress();
+                updateActiveNavLink();
+            });
+
+            // Mobile menu toggle
+            mobileMenuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Smooth scrolling for nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu
+                        navMenu.classList.remove('active');
+                        mobileMenuToggle.classList.remove('active');
+                    }
+                });
+            });
+
+            // CTA button smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ========================================
+        // SCROLL EFFECTS
+        // ========================================
+        function initializeScrollEffects() {
+            // Update scroll progress
+            function updateScrollProgress() {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('scrollProgress').style.width = scrolled + '%';
+            }
+
+            // Update active nav link
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // Make functions globally available
+            window.updateScrollProgress = updateScrollProgress;
+            window.updateActiveNavLink = updateActiveNavLink;
+        }
+
+        // ========================================
+        // ANIMATIONS
+        // ========================================
+        function initializeAnimations() {
+            // Intersection Observer for reveal animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        
+                        // Trigger counter animation for stats section
+                        if (entry.target.closest('.about')) {
+                            animateCounters();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // ========================================
+        // COUNTERS ANIMATION
+        // ========================================
+        function initializeCounters() {
+            window.animateCounters = function() {
+                const counters = document.querySelectorAll('.stat-number');
+                
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const increment = target / 50;
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    
+                    updateCounter();
+                });
+            };
+        }
+
+        // ========================================
+        // CAROUSEL
+        // ========================================
+        function initializeCarousel() {
+            const carousel = document.getElementById('facilitiesCarousel');
+            if (!carousel) return;
+
+            const slides = carousel.querySelector('.carousel-slides');
+            const slideItems = slides.querySelectorAll('.carousel-slide');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+            const dotsContainer = document.getElementById('carouselDots');
+            
+            totalSlides = slideItems.length;
+            currentSlide = 0;
+
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Auto-play
+            startAutoplay();
+            
+            // Pause on hover
+            carousel.addEventListener('mouseenter', stopAutoplay);
+            carousel.addEventListener('mouseleave', startAutoplay);
+
+            // Functions
+            function updateSlide() {
+                slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update dots
+                document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlide();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlide();
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlide();
+            }
+
+            function startAutoplay() {
+                carouselInterval = setInterval(nextSlide, 4000);
+            }
+
+            function stopAutoplay() {
+                if (carouselInterval) {
+                    clearInterval(carouselInterval);
+                }
+            }
+
+            // Make functions globally available
+            window.nextSlide = nextSlide;
+            window.prevSlide = prevSlide;
+            window.goToSlide = goToSlide;
+        }
+
+        // ========================================
+        // FORMS
+        // ========================================
+        function initializeForms() {
+            const admissionForm = document.getElementById('admissionForm');
+            if (!admissionForm) return;
+
+            admissionForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Validation
+                if (!validateForm(data)) {
+                    showNotification('Por favor completa todos los campos obligatorios.', 'error');
+                    return;
+                }
+                
+                // Submit simulation
+                const submitBtn = document.getElementById('submitBtn');
+                const originalText = submitBtn.textContent;
+                
+                submitBtn.textContent = 'Enviando...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    showNotification('¡Solicitud enviada exitosamente! Nos pondremos en contacto contigo pronto.', 'success');
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            });
+
+            function validateForm(data) {
+                const required = ['studentName', 'birthDate', 'grade', 'parentName', 'phone', 'email'];
+                return required.every(field => data[field] && data[field].trim() !== '');
+            }
+        }
+
+        // ========================================
+        // NOTIFICATIONS
+        // ========================================
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                max-width: 400px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            `;
+            
+            // Set background color based on type
+            const colors = {
+                success: '#10B981',
+                error: '#EF4444',
+                info: '#3B82F6'
+            };
+            notification.style.background = colors[type] || colors.info;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after delay
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 4000);
+        }
+
+        // ========================================
+        // LEVEL INFO MODAL (Future Enhancement)
+        // ========================================
+        function showLevelInfo(level) {
+            const levelInfo = {
+                preescolar: {
+                    title: 'Preescolar (3-5 años)',
+                    description: 'En nuestro nivel preescolar, los niños desarrollan habilidades fundamentales a través del juego dirigido, la exploración y actividades diseñadas específicamente para su edad.',
+                    features: [
+                        'Metodología Montessori adaptada',
+                        'Desarrollo de habilidades sociales',
+                        'Introducción al bilingüismo',
+                        'Estimulación artística y musical',
+                        'Preparación para la lectoescritura'
+                    ]
+                },
+                primaria: {
+                    title: 'Primaria (6-11 años)',
+                    description: 'La educación primaria se enfoca en consolidar las bases académicas mientras se desarrollan valores y habilidades para la vida.',
+                    features: [
+                        'Metodología por proyectos',
+                        'Integración tecnológica',
+                        'Programa de liderazgo estudiantil',
+                        'Actividades deportivas y culturales',
+                        'Fortalecimiento en matemáticas y ciencias'
+                    ]
+                },
+                secundaria: {
+                    title: 'Secundaria (12-16 años)',
+                    description: 'En secundaria profundizamos el conocimiento académico mientras preparamos a los estudiantes para decisiones importantes sobre su futuro.',
+                    features: [
+                        'Laboratorios especializados',
+                        'Programa STEM avanzado',
+                        'Intercambios culturales',
+                        'Orientación vocacional',
+                        'Proyectos de investigación'
+                    ]
+                },
+                media: {
+                    title: 'Media Vocacional (17-18 años)',
+                    description: 'La media vocacional prepara integralmente a los estudiantes para el ingreso a la educación superior y el mundo laboral.',
+                    features: [
+                        'Bachillerato académico certificado',
+                        'Preparación para pruebas universitarias',
+                        'Proyectos de grado',
+                        'Prácticas empresariales',
+                        'Programas técnicos SENA'
+                    ]
+                }
+            };
+
+            const info = levelInfo[level];
+            if (!info) return;
+
+            showNotification(`${info.title}: ${info.description}`, 'info');
+        }
+
+        // ========================================
+        // NEWS CAROUSEL AUTO-SCROLL
+        // ========================================
+        function initializeNewsCarousel() {
+            const newsCarousel = document.getElementById('newsCarousel');
+            if (!newsCarousel) return;
+
+            let scrollAmount = 0;
+            const scrollSpeed = 0.5;
+            let isScrolling = true;
+
+            function autoScroll() {
+                if (!isScrolling) return;
+
+                const maxScroll = newsCarousel.scrollWidth - newsCarousel.clientWidth;
+                
+                if (scrollAmount >= maxScroll) {
+                    scrollAmount = 0;
+                } else {
+                    scrollAmount += scrollSpeed;
+                }
+                
+                newsCarousel.scrollLeft = scrollAmount;
+                requestAnimationFrame(autoScroll);
+            }
+
+            // Start auto-scroll
+            autoScroll();
+
+            // Pause on hover
+            newsCarousel.addEventListener('mouseenter', () => {
+                isScrolling = false;
+            });
+
+            newsCarousel.addEventListener('mouseleave', () => {
+                isScrolling = true;
+                autoScroll();
+            });
+        }
+
+        // Initialize news carousel when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initializeNewsCarousel, 2000);
+        });
+
+        // ========================================
+        // PERFORMANCE OPTIMIZATIONS
+        // ========================================
+        
+        // Lazy loading for images
+        function initializeLazyLoading() {
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.classList.remove('lazy');
+                                observer.unobserve(img);
+                            }
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        }
+
+        // Throttle scroll events for better performance
+        function throttle(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply throttling to scroll events
+        window.addEventListener('scroll', throttle(function() {
+            if (window.updateScrollProgress) window.updateScrollProgress();
+            if (window.updateActiveNavLink) window.updateActiveNavLink();
+        }, 16)); // ~60fps
+
+        // ========================================
+        // ACCESSIBILITY ENHANCEMENTS
+        // ========================================
+        
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', function(e) {
+            if (e.target.closest('.carousel')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    if (window.prevSlide) window.prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    if (window.nextSlide) window.nextSlide();
+                }
+            }
+        });
+
+        // Focus management for mobile menu
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            const firstLink = navMenu.querySelector('a');
+            
+            if (navMenu.classList.contains('active') && firstLink) {
+                setTimeout(() => firstLink.focus(), 100);
+            }
+        });
+
+        // ========================================
+        // ERROR HANDLING
+        // ========================================
+        
+        window.addEventListener('error', function(e) {
+            console.error('Error occurred:', e.error);
+            // Could send error to analytics service here
+        });
+
+        // Handle unhandled promise rejections
+        window.addEventListener('unhandledrejection', function(e) {
+            console.error('Unhandled promise rejection:', e.reason);
+            e.preventDefault();
+        });
+
+        // ========================================
+        // ADDITIONAL FEATURES
+        // ========================================
+        
+        // Print styles optimization
+        function optimizeForPrint() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @media print {
+                    .navbar, .whatsapp-float, .loading, .scroll-progress {
+                        display: none !important;
+                    }
+                    .section {
+                        page-break-inside: avoid;
+                        padding: 2rem 0;
+                    }
+                    .hero {
+                        height: auto;
+                        background: var(--azul-principal);
+                        color: white;
+                        padding: 4rem 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Initialize print optimization
+        optimizeForPrint();
+
+        // Back to top functionality
+        function createBackToTop() {
+            const backToTop = document.createElement('button');
+            backToTop.innerHTML = '↑';
+            backToTop.style.cssText = `
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background: var(--azul-principal);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                font-weight: bold;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+                box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            `;
+            
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            document.body.appendChild(backToTop);
+
+            // Show/hide based on scroll position
+            window.addEventListener('scroll', throttle(function() {
+                if (window.scrollY > 500) {
+                    backToTop.style.opacity = '1';
+                    backToTop.style.visibility = 'visible';
+                } else {
+                    backToTop.style.opacity = '0';
+                    backToTop.style.visibility = 'hidden';
+                }
+            }, 100));
+        }
+
+        // Initialize back to top button
+        createBackToTop();
+
+        // ========================================
+        // ANALYTICS AND TRACKING (Placeholder)
+        // ========================================
+        
+        function trackEvent(eventName, eventData = {}) {
+            // Placeholder for analytics tracking
+            console.log('Event tracked:', eventName, eventData);
+            
+            // Example: Google Analytics 4
+            // gtag('event', eventName, eventData);
+            
+            // Example: Facebook Pixel
+            // fbq('track', eventName, eventData);
+        }
+
+        // Track form submissions
+        document.getElementById('admissionForm').addEventListener('submit', function() {
+            trackEvent('form_submission', {
+                form_name: 'admission_form',
+                timestamp: new Date().toISOString()
+            });
+        });
+
+        // Track button clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('.btn, .cta-button')) {
+                trackEvent('button_click', {
+                    button_text: e.target.textContent.trim(),
+                    button_class: e.target.className
+                });
+            }
+        });
+
+        // ========================================
+        // DARK MODE SUPPORT (Future Enhancement)
+        // ========================================
+        
+        function initializeDarkMode() {
+            const darkModeToggle = document.createElement('button');
+            darkModeToggle.innerHTML = '🌙';
+            darkModeToggle.style.cssText = `
+                position: fixed;
+                top: 50%;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background: var(--gris-oscuro);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.2rem;
+                z-index: 998;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                transform: translateY(-50%);
+            `;
+            
+            darkModeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                this.innerHTML = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+                
+                // Save preference
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            });
+
+            // Check saved preference
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '☀️';
+            }
+
+            document.body.appendChild(darkModeToggle);
+
+            // Add dark mode styles
+            const darkModeStyles = document.createElement('style');
+            darkModeStyles.textContent = `
+                .dark-mode {
+                    --blanco: #1F2937;
+                    --gris-claro: #111827;
+                    --gris-medio: #D1D5DB;
+                    --gris-oscuro: #F9FAFB;
+                }
+                
+                .dark-mode .hero {
+                    background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(16, 185, 129, 0.7));
+                }
+            `;
+            document.head.appendChild(darkModeStyles);
+        }
+
+        // Initialize dark mode (commented out for now)
+        // initializeDarkMode();
+
+        // ========================================
+        // FINAL INITIALIZATION
+        // ========================================
+        
+        // Initialize lazy loading when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initializeLazyLoading, 1000);
+        });
+
+        // Log successful initialization
+        console.log('🎓 Colegio Promoción Social - Website initialized successfully!');
+        console.log('✅ All systems operational');
+        
+        // Expose some functions globally for debugging
+        window.ColegioPromociónSocial = {
+            showNotification,
+            trackEvent,
+            showLevelInfo,
+            version: '2.0.0'
+        };
+    </script>
+</body>
+</html>
