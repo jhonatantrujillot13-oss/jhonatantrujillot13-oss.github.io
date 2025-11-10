@@ -1,0 +1,39 @@
+.notification-popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: slideIn 0.3s ease-out;
+}
+
+.profesor-estrellas {
+    cursor: pointer;
+}
+
+.profesor-estrellas:not(.ya-calificado) .star {
+    transition: color 0.2s, transform 0.2s;
+}
+
+.profesor-estrellas:not(.ya-calificado) .star:hover {
+    transform: scale(1.2);
+    color: #ffc107 !important;
+}
+
+.profesor-estrellas.ya-calificado {
+    cursor: default;
+    opacity: 0.9;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

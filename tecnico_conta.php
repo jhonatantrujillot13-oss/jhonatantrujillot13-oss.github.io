@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Técnico en Contabilidad</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+    .hero {
+      background: linear-gradient(to right, #198754, #20c997);
+      color: white;
+      padding: 60px 20px;
+      border-radius: 0 0 30px 30px;
+    }
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <?php include("includes/header.php"); ?>
+
+  <!-- Hero Section -->
+  <section class="hero text-center animate__animated animate__fadeInDown">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Técnico en Contabilidad</h1>
+      <p class="lead">Domina los fundamentos contables y administrativos para apoyar la gestión financiera de cualquier empresa.</p>
+      <a href="#info" class="btn btn-light btn-lg mt-3"><i class="bi bi-arrow-down-circle"></i> Más información</a>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section id="info" class="container my-5">
+    <div class="row g-4">
+      <div class="col-md-6 animate__animated animate__fadeInLeft">
+        <img src="img/contabilidad.jpg" alt="Estudiantes contabilidad" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 animate__animated animate__fadeInRight">
+        <h2 class="fw-bold text-success"><i class="bi bi-calculator"></i> ¿Qué aprenderás?</h2>
+        <p>Este programa técnico, en convenio con el <strong>SENA</strong>, te brinda conocimientos en:</p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">✅ Registro y análisis de operaciones contables</li>
+          <li class="list-group-item">✅ Manejo de software contable y financiero</li>
+          <li class="list-group-item">✅ Legislación tributaria y laboral básica</li>
+          <li class="list-group-item">✅ Apoyo en procesos administrativos y financieros</li>
+        </ul>
+      </div>
+      <div class="col-md-6 animate__animated animate__fadeInRight">
+        <h2 class="fw-bold text-success"><i class="bi bi-clock-history"></i> ¿Cómo y cuánto tiempo dura?</h2>
+        <p>Este programa técnico tiene una duración de 2 años y se cursa de forma presencial durante los grados décimo y once. Al finalizar, obtendrás tu título de técnico en contabilidad junto con el diploma de bachiller. Además, podrás homologar materias en carreras afines o continuar con el tecnólogo en el SENA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="bg-white py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold text-success mb-4"><i class="bi bi-award"></i> Beneficios del programa</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <i class="bi bi-briefcase-fill text-success fs-2"></i>
+              <h5 class="card-title mt-3">Doble titulación</h5>
+              <p class="card-text">Obtendrás el título de técnico en contabilidad y el diploma de bachiller al finalizar once.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <i class="bi bi-bar-chart-line-fill text-success fs-2"></i>
+              <h5 class="card-title mt-3">Proyección profesional</h5>
+              <p class="card-text">Podrás trabajar en áreas contables, administrativas o continuar estudios superiores con ventaja.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card shadow h-100">
+            <div class="card-body">
+              <i class="bi bi-person-workspace text-success fs-2"></i>
+              <h5 class="card-title mt-3">Experiencia práctica</h5>
+              <p class="card-text">Aprenderás con casos reales, software contable y simulaciones empresariales que fortalecen tu perfil laboral.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-4 bg-light mt-5">
+    <p class="mb-0">© 2025 Programa Técnico en Contabilidad - SENA</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

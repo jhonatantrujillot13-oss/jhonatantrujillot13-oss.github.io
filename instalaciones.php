@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instalaciones | I.E. Promoción Social</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Tipografía moderna -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/instalaciones.css" rel="stylesheet">
+
+</head>
+<body class="d-flex flex-column min-vh-100">
+<!-- Navbar (incluido desde header.php) -->
+<?php include 'includes/header.php'; ?>
+
+<!-- Hero de Instalaciones con imagen de fondo y overlay azul -->
+<section class="position-relative" style="height: 320px; background: url('img/I.E.2.jpeg') center center/cover no-repeat;">
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(120deg, #0d6efd88 60%, #0d6efd33 100%);"></div>
+  <div class="container h-100 d-flex flex-column justify-content-center align-items-center position-relative" style="z-index:2;">
+    <h1 class="display-4 fw-bold text-light mb-2 text-shadow">Nuestras Instalaciones</h1>
+    <p class="lead text-light text-center mb-0" style="max-width: 700px;">Contamos con aulas modernas, laboratorios, zonas deportivas y espacios verdes para el desarrollo integral de los estudiantes.</p>
+  </div>
+</section>
+
+<!-- Contenido principal de instalaciones -->
+<div class="container my-5 py-4">
+    <div class="row g-4 mt-4">
+        <div class="col-sm-6 col-md-4 d-flex">
+            <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-1-title">
+                <div class="instalacion-media">
+                    <img src="img/A_artes.jpg" class="instalacion-img" alt="Aula de Artes" onerror="this.onerror=null;this.src='img/relacionadas/artes.jpg'">
+                    <div class="instalacion-overlay">
+                        <div class="overlay-title">Aula de Artes</div>
+                        <div class="instalacion-badge">Aula</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 id="inst-1-title" class="card-title">Aula de Artes</h5>
+                    <p class="card-text truncate-3" id="inst-desc-1">🎨 Espacio creativo equipado para el desarrollo de habilidades artísticas y plásticas, donde los estudiantes muestra su destreza con el pincel y donde se encuentra un gran conocedor del arte que los guia y apoya en sus obras de alto nivel.</p>
+                    <button class="leer-mas" data-target="inst-desc-1" aria-expanded="false">Leer más</button>
+                </div>
+            </article>
+        </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-2-title">
+                    <div class="instalacion-media">
+                        <img src="img/A_ingles.jpg" class="instalacion-img" alt="Aula de Inglés" onerror="this.onerror=null;this.src='img/relacionadas/ingles.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Aula de Inglés</div>
+                            <div class="instalacion-badge">Aula</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-2-title" class="card-title">Aula de Inglés</h5>
+                        <p class="card-text truncate-3" id="inst-desc-2">🗽 Ambiente interactivo para el aprendizaje del idioma inglés con recursos multimedia, un espasio que no solo es para desarrollar una gran habilidad mental al aprender un idiona sino que tambien es uno de los espacios que se presta para el desarrollo de los tecnicos. Además de contar con la guia de excelentes profesores.</p>
+                        <button class="leer-mas" data-target="inst-desc-2" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-3-title">
+                    <div class="instalacion-media">
+                        <img src="img/A_fisica.jpg" class="instalacion-img" alt="Aula de Física" onerror="this.onerror=null;this.src='img/relacionadas/fisica.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Aula de Física</div>
+                            <div class="instalacion-badge">Laboratorio</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-3-title" class="card-title">Aula de Física</h5>
+                        <p class="card-text truncate-3" id="inst-desc-3">⚛️ Laboratorio equipado para prácticas de física, donde se realizan diversos experimentos uno de los favoritos por los estudiantes es la lampara de plasma, donde se pueden evidanciar deversos fenomenos físicos.Además esta aula cuenta con uno de los profesores más didacticos en el momento de dar sus clases para atraer la atencion de los estudiantes.</p>
+                        <button class="leer-mas" data-target="inst-desc-3" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-4-title">
+                    <div class="instalacion-media">
+                        <img src="img/A_tecnologia.jpg" class="instalacion-img" alt="Aula de Tecnología" onerror="this.onerror=null;this.src='img/relacionadas/tecnologia.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Aula de Tecnología</div>
+                            <div class="instalacion-badge">Aula</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-4-title" class="card-title">Aula de Tecnología</h5>
+                        <p class="card-text truncate-3" id="inst-desc-4">💻 Espacio moderno equipado con tecnología de vanguardia y herramientas digitales que facilitan el aprendizaje interactivo, el desarrollo de habilidades informáticas y la exploración de nuevas competencias en el ámbito tecnológico. Este ambiente está diseñado para fomentar la creatividad, la innovación y el pensamiento crítico en los estudiantes, preparándolos para los desafíos del mundo digital.</p>
+                        <button class="leer-mas" data-target="inst-desc-4" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-5-title">
+                    <div class="instalacion-media">
+                        <img src="img/aula-musica.jpeg" class="instalacion-img" alt="Aula de Música" onerror="this.onerror=null;this.src='img/relacionadas/musica.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Aula de Música</div>
+                            <div class="instalacion-badge">Aula</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-5-title" class="card-title">Aula de Música</h5>
+                        <p class="card-text truncate-3" id="inst-desc-5">🎶 Espacio diseñado para el aprendizaje musical Salón especialmente acondicionado y equipado para facilitar tanto la enseñanza como la práctica de diversos instrumentos musicales. Este ambiente está pensado para brindar comodidad acústica, recursos pedagógicos adecuados y un entorno inspirador que fomente el desarrollo artístico de los estudiantes, permitiéndoles explorar y perfeccionar sus habilidades musicales en un contexto profesional y estimulante.</p>
+                        <button class="leer-mas" data-target="inst-desc-5" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-6-title">
+                    <div class="instalacion-media">
+                        <img src="img/A_quimica.jpg" class="instalacion-img" alt="Aula de Química" onerror="this.onerror=null;this.src='img/relacionadas/quimica.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Aula de Química</div>
+                            <div class="instalacion-badge">Laboratorio</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-6-title" class="card-title">Aula de Química</h5>
+                        <p class="card-text truncate-3" id="inst-desc-6">🧪 Laboratorio especializado para experimentos y prácticas de química, donde se evidencia intereses y aprendizajes profundos e importantes, además de contar con un profesor didáctico que hace interesantes sus clases.</p>
+                        <button class="leer-mas" data-target="inst-desc-6" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-7-title">
+                    <div class="instalacion-media">
+                        <img src="img/ludoteca.jpg" class="instalacion-img" alt="Ludoteca" onerror="this.onerror=null;this.src='img/relacionadas/ludoteca.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Ludoteca</div>
+                            <div class="instalacion-badge">Espacio</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-7-title" class="card-title">Ludoteca</h5>
+                        <p class="card-text truncate-3" id="inst-desc-7">🎲 Espacio lúdico y educativo con juegos y materiales didácticos para el desarrollo integral de los estudiantes.</p>
+                        <button class="leer-mas" data-target="inst-desc-7" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-8-title">
+                    <div class="instalacion-media">
+                        <img src="img/auditorio.jpg" class="instalacion-img" alt="Auditorio" onerror="this.onerror=null;this.src='img/relacionadas/auditorio.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Auditorio</div>
+                            <div class="instalacion-badge">Espacio</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-8-title" class="card-title">Auditorio</h5>
+                        <p class="card-text truncate-3" id="inst-desc-8">🎤 Espacio amplio para eventos institucionales, presentaciones y actividades culturales.</p>
+                        <button class="leer-mas" data-target="inst-desc-8" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+            <div class="col-sm-6 col-md-4 d-flex">
+                <article class="instalacion-card shadow-custom w-100" aria-labelledby="inst-9-title">
+                    <div class="instalacion-media">
+                        <img src="img/agora.jpg" class="instalacion-img" alt="Ágora" onerror="this.onerror=null;this.src='img/relacionadas/agora.jpg'">
+                        <div class="instalacion-overlay">
+                            <div class="overlay-title">Ágora</div>
+                            <div class="instalacion-badge">Espacio</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 id="inst-9-title" class="card-title">Ágora</h5>
+                        <p class="card-text truncate-3" id="inst-desc-9">🏛️ Espacio abierto para reuniones, actividades al aire libre y encuentros de la comunidad educativa.</p>
+                        <button class="leer-mas" data-target="inst-desc-9" aria-expanded="false">Leer más</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+<div class="seccion-institucional">
+  <h2>Espacios Institucionales</h2>
+  <p>
+    Además de nuestras aulas y espacios académicos, contamos con una biblioteca institucional equipada para fomentar la lectura y la investigación. También disponemos de un comedor escolar donde los estudiantes pueden disfrutar de su merienda en un ambiente cómodo y seguro. Nuestros espacios de descanso están diseñados para promover el bienestar, y en ellos se exhiben los trabajos creativos realizados por nuestros estudiantes.
+  </p>
+
+    <div class="galeria-grid" aria-label="Galería de espacios institucionales">
+        <figure class="galeria-item" tabindex="0">
+            <img src="img/otros_1.jpg" alt="Biblioteca institucional" data-full="img/otros_1.jpg" onerror="this.onerror=null;this.src='img/relacionadas/otros_1.jpg'">
+            <figcaption class="galeria-caption">
+                <span class="caption-title">Biblioteca institucional</span>
+                <small class="caption-meta">Biblioteca • Lectura</small>
+            </figcaption>
+        </figure>
+        <figure class="galeria-item" tabindex="0">
+            <img src="img/otros_2.jpg" alt="Comedor escolar" data-full="img/otros_2.jpg" onerror="this.onerror=null;this.src='img/relacionadas/otros_2.jpg'">
+            <figcaption class="galeria-caption">
+                <span class="caption-title">Comedor escolar y espacios de descanso</span>
+                <small class="caption-meta">Comedor • Bienestar</small>
+            </figcaption>
+        </figure>
+        <!-- Agrega más figuras si es necesario -->
+    </div>
+
+    <!-- Modal Lightbox (Bootstrap) -->
+    <div class="modal fade" id="galeriaLightbox" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-body p-0 text-center position-relative">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <img src="" alt="" class="lightbox-img" id="lightboxImage">
+                    <div class="mt-2 text-white small" id="lightboxCaption"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script: toggle 'Leer más' para descripciones -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.leer-mas').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                var targetId = btn.getAttribute('data-target');
+                var el = document.getElementById(targetId);
+                if(!el) return;
+                var expanded = btn.getAttribute('aria-expanded') === 'true';
+                if(expanded) {
+                    el.classList.add('truncate-3');
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.textContent = 'Leer más';
+                } else {
+                    el.classList.remove('truncate-3');
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.textContent = 'Leer menos';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    // Lightbox: abrir imagen al hacer click o Enter
+    (function(){
+        var modalEl = document.getElementById('galeriaLightbox');
+        if(!modalEl) return;
+        var bsModal = new bootstrap.Modal(modalEl, {});
+        var lightboxImg = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+
+        function openLightbox(src, alt, caption) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || '';
+            lightboxCaption.textContent = caption || '';
+            bsModal.show();
+        }
+
+        document.querySelectorAll('.galeria-item img').forEach(function(img){
+            var figure = img.closest('.galeria-item');
+            figure.addEventListener('click', function(){
+                openLightbox(img.getAttribute('data-full') || img.src, img.alt, figure.querySelector('.caption-title')?.textContent);
+            });
+            figure.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); figure.click(); }
+            });
+        });
+    })();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php include("includes/footer.php"); ?>
+</body>
+</html>

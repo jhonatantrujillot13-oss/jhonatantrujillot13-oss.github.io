@@ -1,0 +1,629 @@
+/* Estilos personalizados para I.E. Promoción Social */
+
+/* Variables CSS personalizadas */
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --info-color: #0dcaf0;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --bs-primary: #0d6efd;
+  --bs-primary-rgb: 13, 110, 253;
+}
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+}
+
+/* Navbar personalizado */
+.navbar {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 100%;
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(135deg, rgba(13, 110, 253, 0.8) 0%, rgba(13, 110, 253, 0.4) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../img/I.E.jpeg') center/cover no-repeat;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.hero h1 {
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Cards personalizadas */
+.card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+  transition: all 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Botones personalizados */
+.btn {
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-color), #0056b3);
+  border: none;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #0056b3, var(--primary-color));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.4);
+}
+
+.btn-outline-primary {
+  border-width: 2px;
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+/* Formularios personalizados */
+.form-control {
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Alertas personalizadas */
+.alert {
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+}
+
+.alert-success {
+  background: linear-gradient(45deg, #d1e7dd, #badbcc);
+  color: #0f5132;
+}
+
+.alert-danger {
+  background: linear-gradient(45deg, #f8d7da, #f5c2c7);
+  color: #842029;
+}
+
+/* Tablas personalizadas */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.table thead th {
+  background: linear-gradient(45deg, var(--dark-color), #495057);
+  color: white;
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05);
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+
+/* Badges personalizados */
+.badge {
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Footer personalizado */
+footer {
+  background: linear-gradient(135deg, var(--dark-color) 0%, #343a40 100%);
+}
+
+footer h5 {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  transition: all 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--primary-color) !important;
+  transform: scale(1.1);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate__fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate__fadeInLeft {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate__fadeInRight {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+}
+
+/* Scroll to top button */
+#btnScrollTop {
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+#btnScrollTop:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Custom utilities */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(45deg, var(--primary-color), #0056b3);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, var(--dark-color), #343a40);
+}
+
+/* Image hover effects */
+.img-hover {
+  transition: all 0.3s ease;
+}
+
+.img-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Section spacing */
+.section-padding {
+  padding: 4rem 0;
+}
+
+.section-margin {
+  margin: 4rem 0;
+}
+
+/* Custom shadows */
+.shadow-custom {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-custom:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para comentarios */
+.comentario-item {
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+.comentario-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.comentario-contenido {
+  line-height: 1.6;
+  color: var(--dark-color);
+}
+
+.comentario-item .text-primary {
+  font-weight: 600;
+}
+
+.comentario-item small {
+  font-size: 0.85rem;
+}
+
+/* Formulario de comentarios */
+#comentarioForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#comentarioForm textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Contador de caracteres */
+#charCount {
+  font-weight: 600;
+}
+
+#charCount.text-warning {
+  color: var(--warning-color) !important;
+}
+
+#charCount.text-danger {
+  color: var(--danger-color) !important;
+}
+
+/* Notificaciones de comentarios */
+.alert.position-fixed {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Dashboard cards para admin */
+.admin-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+  color: white;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Responsive para comentarios */
+@media (max-width: 768px) {
+  .comentario-item {
+    margin-bottom: 1rem;
+  }
+  
+  .comentario-item:hover {
+    transform: none;
+  }
+  
+  .alert.position-fixed {
+    left: 10px;
+    right: 10px;
+    min-width: auto;
+  }
+}
+
+/* Estilos para botones de comentarios en tarjetas */
+.card .btn-outline-primary {
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.card .btn-outline-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+.card .d-flex.gap-2 {
+  gap: 0.5rem !important;
+}
+
+/* Modal de comentario rápido */
+#comentarioRapidoModal .modal-content {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+#comentarioRapidoModal .modal-header {
+  border-radius: 15px 15px 0 0;
+}
+
+#comentarioRapidoModal .modal-footer {
+  border-radius: 0 0 15px 15px;
+}
+
+#comentarioRapidoModal textarea {
+  border-radius: 10px;
+  resize: vertical;
+  min-height: 120px;
+}
+
+#comentarioRapidoModal textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Responsive para botones de comentarios */
+@media (max-width: 576px) {
+  .card .d-flex.gap-2 {
+    flex-direction: column;
+    gap: 0.5rem !important;
+  }
+  
+  .card .btn {
+    width: 100%;
+  }
+}
+
+/* Imagen circular para personal/profesores destacados */
+.profesor-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+/* Tarjeta de profesor destacada */
+.profesor-card {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 370px;
+}
+.profesor-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  transform: translateY(-3px) scale(1.01);
+}
+.profesor-nombre {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-size: 1.25rem;
+  color: #222;
+}
+.profesor-educacion {
+  font-size: 1rem;
+  color: #666;
+}
+.profesor-estrellas .star {
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.profesor-estrellas .star:hover,
+.profesor-estrellas .star.hovered {
+  color: #ffb300 !important;
+}
+@media (max-width: 600px) {
+  .profesor-card { min-height: 320px; }
+  .profesor-img { width: 90px; height: 90px; }
+}
+
+/* Tarjetas de información institucional */
+.info-card {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 1.5rem 2rem 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border: none;
+  position: relative;
+  min-height: 120px;
+}
+@media (max-width: 900px) {
+  .info-card { flex-direction: column; padding: 1.2rem; }
+}
+.info-card .info-content {
+  flex: 1 1 auto;
+  font-size: 1.08rem;
+  color: #222;
+  line-height: 1.7;
+}
+.info-card .info-edit-btn {
+  align-self: flex-start;
+  border-radius: 2rem;
+  border: 1.5px solid #0984e3;
+  background: #fff;
+  color: #0984e3;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  transition: all 0.18s;
+  box-shadow: 0 2px 8px rgba(9,132,227,0.04);
+}
+.info-card .info-edit-btn:hover {
+  background: #0984e3;
+  color: #fff;
+  border-color: #0984e3;
+  box-shadow: 0 4px 16px rgba(9,132,227,0.13);
+}
+.info-section-title {
+  color: #0984e3;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  margin-top: 2.5rem;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 900px) {
+  .info-section-title { margin-top: 1.5rem; }
+}
+.info-list-group .list-group-item.active, .info-list-group .list-group-item:focus {
+  background: linear-gradient(90deg,#74b9ff 0%,#0984e3 100%);
+  color: #fff;
+  border: none;
+}
+.info-list-group .list-group-item {
+  font-size: 1.08rem;
+  border: none;
+  border-bottom: 1px solid #e9ecef;
+  background: #fff;
+  color: #222;
+  transition: background 0.15s, color 0.15s;
+}
+.info-list-group .list-group-item:last-child { border-bottom: none; }
+.info-list-group .list-group-item:hover {
+  background: #f1f7ff;
+  color: #0984e3;
+}
+
+/* Efecto de zoom para imágenes de noticias */
+.noticia-img-zoom {
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+  cursor: zoom-in;
+}
+.noticia-img-zoom:hover {
+  transform: scale(2.2) translateY(-10px);
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border-radius: 8px;
+  position: relative;
+}

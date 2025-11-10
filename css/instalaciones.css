@@ -1,0 +1,192 @@
+/* Estilos personalizados para la sección de instalaciones */
+.instalacion-card {
+  border: none;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 410px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+.instalacion-card:hover {
+  box-shadow: 0 8px 32px rgba(13,110,253,0.18);
+  transform: translateY(-3px) scale(1.01);
+}
+.instalacion-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+.instalacion-card:hover .instalacion-img {
+  transform: scale(1.07);
+}
+.instalacion-media {
+  position: relative;
+  overflow: hidden;
+}
+.instalacion-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 60%);
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+}
+.instalacion-overlay .overlay-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+}
+.instalacion-badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+.instalacion-card .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.instalacion-card .card-title {
+  font-weight: 700;
+  color: #0d6efd;
+  font-size: 1.18rem;
+  margin-bottom: 0.5rem;
+}
+.instalacion-card .card-text {
+  color: #333;
+  font-size: 1.01rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.instalacion-card .card-subtext {
+  color: #6c757d;
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+}
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.leer-mas {
+  background: none;
+  border: none;
+  color: var(--primary-color, #0d6efd);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+}
+.leer-mas:hover { text-decoration: underline; }
+@media (max-width: 900px) {
+  .instalacion-card { min-height: 350px; }
+  .instalacion-img { height: 150px; }
+}
+@media (max-width: 600px) {
+  .instalacion-card { min-height: 280px; }
+  .instalacion-img { height: 110px; }
+}
+
+/* Accessibility: focus visible for interactive elements */
+.leer-mas:focus {
+  outline: 3px solid rgba(13,110,253,0.18);
+  outline-offset: 3px;
+}
+
+/* Sección institucional: galería moderna */
+.seccion-institucional {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 36px;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(12, 59, 120, 0.06);
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #24303f;
+}
+.seccion-institucional h2 {
+  font-size: 1.9rem;
+  color: #0d47a1;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+.seccion-institucional p { 
+  color: #455066;
+  font-size: 1.03rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.galeria-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(7, 45, 100, 0.06);
+  cursor: pointer;
+}
+.galeria-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+  display: block;
+}
+.galeria-item:focus { outline: 3px solid rgba(13,110,253,0.12); outline-offset: 3px; }
+.galeria-item:hover img {
+  transform: scale(1.06);
+  filter: contrast(1.02) saturate(1.05);
+}
+.galeria-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 60%);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.galeria-caption .caption-title { font-size: 0.95rem; }
+.galeria-caption .caption-meta { font-size: 0.82rem; opacity: 0.9; }
+
+@media (max-width: 1100px) {
+  .galeria-grid { grid-template-columns: repeat(3, 1fr); }
+  .galeria-item img { height: 160px; }
+}
+@media (max-width: 768px) {
+  .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+  .galeria-item img { height: 140px; }
+  .seccion-institucional { padding: 24px; }
+}
+@media (max-width: 480px) {
+  .galeria-grid { grid-template-columns: 1fr; }
+  .galeria-item img { height: 210px; }
+}
+
+/* Lightbox modal image fit */
+.lightbox-img { width: 100%; height: auto; max-height: 75vh; object-fit: contain; }
