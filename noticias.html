@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - I.E. Promoción Social</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/noticias.css" rel="stylesheet">
+<style>
+  body {
+            background: #ffffff;
+    min-height: 100vh;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            padding: 80px 0 60px;
+            margin-bottom: 60px;
+    position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/I.E.2.jpeg') center center/cover no-repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+        
+        .search-container {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        
+        .search-form {
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .search-form:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .search-input {
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            outline: none;
+            width: 100%;
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(116, 185, 255, 0.4);
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            border: none;
+            position: relative;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-image {
+            height: 280px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .news-card:hover .news-image {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 30px;
+        }
+        
+        .news-title {
+            color: #0984e3;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            line-height: 1.3;
+        }
+        
+        .news-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border-radius: 2px;
+        }
+        
+        .news-excerpt {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .news-meta {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .news-date {
+            color: #0984e3;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .news-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .btn-read-more {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        
+        .btn-read-more:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(116, 185, 255, 0.4);
+            color: white;
+        }
+        
+        .btn-comment {
+            background: white;
+            border: 2px solid #0984e3;
+            border-radius: 25px;
+            padding: 12px 15px;
+            color: #0984e3;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 50px;
+        }
+        
+        .btn-comment:hover {
+            background: #0984e3;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(116, 185, 255, 0.3);
+        }
+        
+        .empty-state {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .empty-icon {
+            font-size: 5rem;
+            color: #0984e3;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0 40px;
+            }
+            
+            .search-container {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .news-content {
+                padding: 20px;
+            }
+            
+            .news-actions {
+                flex-direction: column;
+            }
+            
+            .btn-read-more, .btn-comment {
+                width: 100%;
+            }
+        }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="img/escudo.jpeg" alt="Logo I.E. Promoción Social" width="40" height="40" class="me-2">
+            <span class="fw-bold text-primary">I.E. Promoción Social</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link active" href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="sedes.html">Sedes</a></li>
+                <li class="nav-item"><a class="nav-link" href="instalaciones.html">Instalaciones</a></li>
+                <li class="nav-item"><a class="nav-link" href="informacion.html">Información</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="tecnicosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Técnicos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="tecnicosDropdown">
+                        <li><a class="dropdown-item" href="tecnico_softw.html">Programación de Software</a></li>
+                        <li><a class="dropdown-item" href="tecnico_conta.html">Contabilidad</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="tecnicos.html">Ver Personal Técnico</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                 <li class="nav-item">
+                    <a href="auth/login.html" class="btn btn-primary ms-lg-2">
+                        <i class="bi bi-person-circle me-1"></i> Iniciar Sesión
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="hero-section">
+    <div class="container">
+        <div class="hero-content text-center">
+            <h1 class="display-4 text-white fw-bold mb-3">
+                <i class="bi bi-newspaper me-3"></i>Noticias y Eventos
+            </h1>
+            <p class="lead text-white-50 mb-0">
+                Mantente informado sobre las últimas noticias y eventos de nuestra institución
+            </p>
+        </div>
+    </div>
+  </div>
+ 
+
+<div class="container">
+        <!-- Filtro visual mejorado -->
+        <form onsubmit="return false;" class="mb-4">
+            <fieldset disabled>
+                <div class="filter-bar">
+                    <div class="filter-icon"><i class="bi bi-funnel-fill"></i></div>
+                    <div class="flex-grow-1">
+                        <label class="form-label mb-0 small text-muted">Filtrar noticias (Deshabilitado)</label>
+                        <select name="categoria_id" id="categoria_id" class="form-select">
+                                <option value="0">Todas las categorías</option>
+                                <option value="1" >Área/Asignatura</option>
+                                <option value="2" >Institucionales</option>
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button type="submit" class="btn btn-primary me-2">Aplicar</button>
+                        <a href="noticias.html" class="btn btn-outline-secondary btn-clear">Limpiar</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+    <!-- Lista de noticias -->
+    <div class="row">
+        <!-- Noticia 1 -->
+        <div class="col-lg-6">
+            <div class="news-card">
+                <img src="img/colegio-1.jpg" class="news-image w-100 noticia-img-zoom" alt="Bienvenida al Nuevo Año Escolar 2025" onerror="this.src='img/escudo.jpeg'">
+                <div class="news-content">
+                    <h3 class="news-title">Bienvenida al Nuevo Año Escolar 2025</h3>
+                    <p class="news-excerpt">La Institución Educativa Promoción Social da la bienvenida a todos los estudiantes, padres de familia y docentes al nuevo año escolar 2025....</p>
+                    <div class="news-meta">
+                        <div class="news-date mb-1">
+                            <i class="bi bi-calendar-event me-2"></i>
+                            31/10/2025
+                        </div>
+                    </div>
+                    <div class="news-actions">
+                        <a href="ver_noticia_1.html" class="btn btn-read-more">
+                            <i class="bi bi-eye me-2"></i>Leer más
+                        </a>
+                        <a href="auth/login.html" class="btn btn-comment" title="Inicia sesión para comentar">
+                            <i class="bi bi-chat-dots"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Noticia 2 -->
+        <div class="col-lg-6">
+            <div class="news-card">
+                <img src="img/I.E.jpeg" class="news-image w-100 noticia-img-zoom" alt="Celebración del Día del Estudiante" onerror="this.src='img/escudo.jpeg'">
+                <div class="news-content">
+                    <h3 class="news-title">Celebración del Día del Estudiante</h3>
+                    <p class="news-excerpt">Con gran entusiasmo celebramos el Día del Estudiante con actividades deportivas, culturales y recreativas. Felicitamos a todos nuestros...</p>
+                    <div class="news-meta">
+                        <div class="news-date mb-1">
+                            <i class="bi bi-calendar-event me-2"></i>
+                            31/10/2025
+                        </div>
+                    </div>
+                    <div class="news-actions">
+                        <a href="ver_noticia_2.html" class="btn btn-read-more">
+                            <i class="bi bi-eye me-2"></i>Leer más
+                        </a>
+                        <a href="auth/login.html" class="btn btn-comment" title="Inicia sesión para comentar">
+                            <i class="bi bi-chat-dots"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Noticia 3 -->
+        <div class="col-lg-6">
+            <div class="news-card">
+                <img src="img/I.E.2.jpeg" class="news-image w-100 noticia-img-zoom" alt="Jornada de Capacitación Docente" onerror="this.src='img/escudo.jpeg'">
+                <div class="news-content">
+                    <h3 class="news-title">Jornada de Capacitación Docente</h3>
+                    <p class="news-excerpt">Nuestros docentes participaron en una jornada de capacitación sobre nuevas metodologías de enseñanza y uso de tecnologías en el aula....</p>
+                    <div class="news-meta">
+                        <div class="news-date mb-1">
+                            <i class="bi bi-calendar-event me-2"></i>
+                            31/10/2025
+                        </div>
+                    </div>
+                    <div class="news-actions">
+                        <a href="ver_noticia_3.html" class="btn btn-read-more">
+                            <i class="bi bi-eye me-2"></i>Leer más
+                        </a>
+                        <a href="auth/login.html" class="btn btn-comment" title="Inicia sesión para comentar">
+                            <i class="bi bi-chat-dots"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para comentario rápido -->
+<div class="modal fade" id="comentarioRapidoModal" tabindex="-1" aria-labelledby="comentarioRapidoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="comentarioRapidoModalLabel">
+          <i class="bi bi-chat-dots me-2"></i>Comentar en noticia
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">Debes <a href="auth/login.html">iniciar sesión</a> para poder comentar.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <i class="bi bi-x-circle me-1"></i>Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-dark text-white pt-5 pb-4 mt-5">
+    <div class="container text-center text-md-start">
+        <div class="row text-center text-md-start">
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 fw-bold text-primary">I.E. Promoción Social</h5>
+                <p>Educando con valores, excelencia y compromiso en Palermo, Huila.</p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 fw-bold text-primary">Enlaces</h5>
+                <p><a href="noticias.html" class="text-white">Noticias</a></p>
+                <p><a href="sedes.html" class="text-white">Sedes</a></p>
+                <p><a href="informacion.html" class="text-white">Información</a></p>
+            </div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h5 class="text-uppercase mb-4 fw-bold text-primary">Contacto</h5>
+                <p><i class="bi bi-geo-alt-fill me-3"></i>Palermo, Huila, Colombia</p>
+                <p><i class="bi bi-envelope-fill me-3"></i>contacto@promocionsocial.edu.co</p>
+                <p><i class="bi bi-telephone-fill me-3"></i>+57 312 3456789</p>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <div class="row align-items-center">
+            <div class="col-md-7 col-lg-8">
+                <p> © 2025 Copyright:
+                    <a href="index.html" class="text-white">I.E. Promoción Social</a>
+                </p>
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <div class="text-center text-md-end">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="bi bi-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="bi bi-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn-floating btn-sm text-white" style="font-size: 23px;"><i class="bi bi-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
